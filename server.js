@@ -9,8 +9,7 @@ var bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-// we've started you off with Express, 
-// but feel free to use whatever libs or frameworks you'd like through `package.json`.
+
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -20,9 +19,14 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.post("/get-file-size",function(request,response){
+  request.session.foo = request.body;
+  response.send(200);
+});
+
 app.get("/get-file-size",function(request,response){
-  console.log(JSON.stringify(request.body));
-  response.send(JSON.stringify(request.body));//response.end("Hello");
+  console.log(request.session.foo);
+  response.send(request.session.foo);
 
 });
 
