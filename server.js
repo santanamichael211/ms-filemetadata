@@ -23,7 +23,8 @@ app.get("/", function (request, response) {
 
 app.post("/get-file-size",function(request,response){
   size = JSON.stringify(request.body);
-  response.redirect(300,"get/")
+  console.log("POST");
+  response.end();
 });
 
 app.get("/get-file-size",function(request,response){

@@ -19,6 +19,10 @@ function upload(){
     error: function(err){
      alert("error occured");
     }  
+    },function(){
+    
+    window.location.href = "/get-file-size";
+    
     });
         
         
