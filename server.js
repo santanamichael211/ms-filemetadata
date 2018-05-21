@@ -5,7 +5,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var multer = require("multer");
+var multer  = require('multer')
+var upload = multer({ dest: 'uploads/' })
 
 
 var file = null;
@@ -14,7 +15,7 @@ var file = null;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(multer.array()); 
+app.use(upload.array()); 
 
 
 // http://expressjs.com/en/starter/static-files.html
@@ -25,13 +26,14 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.post("/get-file-size",function(request,response){
-  size = JSON.stringify(request.body);
+app.post("/get-file-size", upload.single('avatar'), function(request,response){
+  file = JSON.stringify(request.file);
+  console.log(file);
   response.end();
 });
 
 app.get("/get-file-size",function(request,response){
-  response.send(size);
+  response.send(file);
 });
 
 // listen for requests :)
