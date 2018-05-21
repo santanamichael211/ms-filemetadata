@@ -9,7 +9,7 @@ var formidable = require('formidable');
 var util = require("util");
 
 
-var file = null;
+var size = 0;
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,18 +26,15 @@ app.get("/", function (request, response) {
 });
 
 app.post("/get-file-size", function(request,response){
-  file = new formidable.IncomingForm();
-  
-    file.parse(request, function(err,fields,files){
-      console.log(util.inspect({fields: fields, files: files}));
-    
+  var form = new formidable.IncomingForm();
+    form.parse(request, function(err,fields,files){
+      size ={size: files.file.size};
+      response.end();
     })
-  
-  response.end();
 });
 
 app.get("/get-file-size",function(request,response){
-  response.send(file);
+  response.send(size);
 });
 
 // listen for requests :)
