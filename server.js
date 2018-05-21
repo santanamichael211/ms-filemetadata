@@ -19,10 +19,8 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-
 app.get("/get-file-size",function(request,response){
   response.send(JSON.stringify(request.query));
-
 });
 
 // listen for requests :)
