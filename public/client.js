@@ -8,16 +8,14 @@ function upload(){
         }
       else{
         var data = {
-        size: upFile.size
-        } 
-        
-        console.log(data);
+        size: upFile.files[0].size
+        }
           
-        
     $.ajax({
-    type:"POST",
+    type:'POST',
     url:"/get-file-size",
-    //data:upFile,
+    data:data,
+    contentType: 'application/json',
     success: function(response){
       console.log("Success");
     },
