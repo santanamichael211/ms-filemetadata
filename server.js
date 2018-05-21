@@ -20,14 +20,9 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.post("/get-file-size",function(request,response){
+app.get("/get-file-size",function(request,response){
   console.log(JSON.stringify(request.body));
-   response.redirect(307,"get-file-size/"+JSON.stringify(request.body));
-});
-
-app.get("/get-file-size/:par",function(request,response){
-  //response.send(JSON.stringify(request.body));
-  response.end("Hello");
+  response.send(JSON.stringify(request.body));//response.end("Hello");
 
 });
 
