@@ -8,13 +8,15 @@ function upload(){
         }
       else{
       
+        var formData = new FormData();
+        formData.append("size",)
           
     $.ajax({
     type:'POST',
     url:"/get-file-size",
     data:{size: upFile.files[0].size},  
     success: function(response){
-      alert("Success");
+      alert("Data Uploaded Successfully");
       document.getElementById("submit").removeAttribute("disabled");
     },
     error: function(err){
