@@ -9,12 +9,14 @@ function upload(){
       else{
       
         var formData = new FormData();
-        formData.append("size",)
+        formData.append("file",upFile.files[0]);
           
     $.ajax({
     type:'POST',
     url:"/get-file-size",
-    data:{size: upFile.files[0].size},  
+    data:formData,
+    processData: false,
+    contentType: false,
     success: function(response){
       alert("Data Uploaded Successfully");
       document.getElementById("submit").removeAttribute("disabled");

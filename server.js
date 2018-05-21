@@ -5,12 +5,16 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
+var multer = require("multer");
 
-var size = 0;
+
+var file = null;
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+app.use(multer.array()); 
 
 
 // http://expressjs.com/en/starter/static-files.html
