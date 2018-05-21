@@ -23,7 +23,6 @@ app.get("/", function (request, response) {
 
 app.post("/get-file-size",function(request,response){
   size = JSON.stringify(request.body);
-  console.log("POST");
   response.end();
 });
 

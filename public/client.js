@@ -15,14 +15,11 @@ function upload(){
     data:{size: upFile.files[0].size},  
     success: function(response){
       alert("Success");
+      document.getElementById("submit").removeAttribute("disabled");
     },
     error: function(err){
      alert("error occured");
     }  
-    },function(){
-    
-    window.location.href = "/get-file-size";
-    
     });
         
         
