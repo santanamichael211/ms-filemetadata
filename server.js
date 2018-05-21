@@ -21,13 +21,11 @@ app.get("/", function (request, response) {
 });
 
 app.post("/get-file-size",function(request,response){
-  response.send(JSON.stringify(request.body));
+  
+   //response.writeHead(301, {"Location":"/get-file-size"});
+   response.end("Hello");
 });
 
-app.get("/get-file-size",function(request,response){
-  response.send("Success");
-
-});
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {

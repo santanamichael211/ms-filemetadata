@@ -15,7 +15,7 @@ function upload(){
     dataType:"text",
     data:{"size": upFile.files[0].size},  
     success: function(response){
-      window.location.href="/get-file-size";
+      alert("Success");
     },
     error: function(err){
      alert("error occured");
