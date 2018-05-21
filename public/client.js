@@ -7,17 +7,14 @@ function upload(){
           console.log("No File Selected");
         }
       else{
-        var data = {
-        size: upFile.files[0].size
-        }
+      
           
     $.ajax({
     type:'POST',
     url:"/get-file-size",
-    dataType: "text",
-    data:data,  
+    dataType:"text",
+    data:{"size": upFile.files[0].size},  
     success: function(response){
-      alert(data);
       window.location.href="/get-file-size";
     },
     error: function(err){

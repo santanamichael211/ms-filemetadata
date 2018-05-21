@@ -7,6 +7,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // we've started you off with Express, 
 // but feel free to use whatever libs or frameworks you'd like through `package.json`.
@@ -20,8 +21,7 @@ app.get("/", function (request, response) {
 });
 
 app.post("/get-file-size",function(request,response){
-  console.log(JSON.stringify(request.body));
-  response.send("Success");
+  response.send(JSON.stringify(request.body));
 });
 
 app.get("/get-file-size",function(request,response){
