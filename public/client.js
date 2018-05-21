@@ -10,6 +10,8 @@ function upload(){
       
         var formData = new FormData();
         formData.append("file",upFile.files[0]);
+        
+      
           
     $.ajax({
     type:'POST',

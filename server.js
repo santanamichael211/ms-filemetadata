@@ -5,8 +5,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var multer  = require('multer')
-var upload = multer({ dest: 'uploads/' })
+var formidable = require('formidable');
+var util = require("util");
 
 
 var file = null;
@@ -15,7 +15,6 @@ var file = null;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-app.use(upload.array()); 
 
 
 // http://expressjs.com/en/starter/static-files.html
@@ -26,9 +25,14 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.post("/get-file-size", upload.single('avatar'), function(request,response){
-  file = JSON.stringify(request.file);
-  console.log(file);
+app.post("/get-file-size", function(request,response){
+  file = new formidable.IncomingForm();
+  
+    file.parse(request, function(err,fields,files){
+      console.log(util.inspect({fields: fields, files: files}));
+    
+    })
+  
   response.end();
 });
 
