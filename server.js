@@ -17,7 +17,11 @@ app.get("/", function (request, response) {
 });
 
 app.post("/get-file-size",function(request,response){
-  console.log(request.body);
+  response.send("Success");
+});
+
+app.get("/get-file-size",function(request,response){
+  response.send("Success");
 
 });
 

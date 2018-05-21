@@ -13,16 +13,17 @@ function upload(){
           
     $.ajax({
     type:'POST',
-    url:"/get-file-size",
-    data:data,
-    contentType: 'application/json',
+    url:"/get-file-size", 
     success: function(response){
-      console.log("Success");
+      alert("Success");
+      window.location.href="/get-file-size";
     },
     error: function(err){
-      console.log(err);
+     console.log("error occured");
     }  
-    })
+    });
+        
+        
       }  
       }
 }
