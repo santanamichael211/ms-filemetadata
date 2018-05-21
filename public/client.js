@@ -1,24 +1,30 @@
 function upload(){
   
   var upFile = document.getElementById("up-file");
+  
+  if("files" in upFile){
+        if(upFile.files.length == 0){
+          console.log("No File Selected");
+        }
+      else{
+        var data = {
+        size: upFile.size
+        } 
+        
+        console.log(data);
+          
+        
     $.ajax({
     type:"POST",
     url:"/get-file-size",
+    //data:upFile,
     success: function(response){
-      
-      if("files" in upFile){
-        if(upFile.files.length == 0){
-          return "No File Selected";
-        }
-      else{
-        
-        return upFile;
-      }  
-      }
+      console.log("Success");
     },
     error: function(err){
-      console.log("Hello");
-    return err;
+      console.log(err);
     }  
     })
+      }  
+      }
 }
