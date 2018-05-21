@@ -6,6 +6,8 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 
+var size = 0;
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -19,8 +21,13 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.post("/get-file-size",function(request,response){
+  size = JSON.stringify(request.body);
+  response.redirect(300,"get/")
+});
+
 app.get("/get-file-size",function(request,response){
-  response.send(JSON.stringify(request.query));
+  response.send(size);
 });
 
 // listen for requests :)

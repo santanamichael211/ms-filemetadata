@@ -10,7 +10,7 @@ function upload(){
       
           
     $.ajax({
-    type:'GET',
+    type:'POST',
     url:"/get-file-size",
     data:{size: upFile.files[0].size},  
     success: function(response){
