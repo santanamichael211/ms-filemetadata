@@ -7,7 +7,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
@@ -21,8 +21,7 @@ app.get("/", function (request, response) {
 
 
 app.get("/get-file-size",function(request,response){
-  console.log(request.body);
-  response.send(request.body);
+  response.send(JSON.stringify(request.query));
 
 });
 
